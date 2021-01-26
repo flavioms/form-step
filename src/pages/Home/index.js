@@ -1,17 +1,19 @@
 import React, { useState, useCallback } from "react";
+import { Formik } from "formik";
 import Step1 from "./components/Step1";
 import Step2 from "./components/Step2";
 import Step3 from "./components/Step3";
 import Button from "../../components/Button";
 import { Container, WrapperButtons } from "./styles";
+import validation from "./validation";
 
 const SwitchStep = ({ step }) => {
   switch (step) {
-    case 1:
+    case 0:
       return <Step1 />;
-    case 2:
+    case 1:
       return <Step2 />;
-    case 3:
+    case 2:
       return <Step3 />;
     default:
       return null;
@@ -19,27 +21,49 @@ const SwitchStep = ({ step }) => {
 };
 
 function Home() {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(0);
 
   const nextStep = useCallback(() => {
-    if (step <= 3) {
+    if (step <= 2) {
       setStep((old) => old + 1);
     }
   }, [step]);
 
   const prevStep = useCallback(() => {
-    if (step > 1) {
+    if (step > 0) {
       setStep((old) => old - 1);
     }
   }, [step]);
 
   return (
     <Container>
-      <SwitchStep step={step} />
-      <WrapperButtons>
-        <Button onClick={prevStep} label="Anterior" />
-        <Button onClick={nextStep} label="Próximo" />
-      </WrapperButtons>
+      <Formik
+        initialValues={{
+          firstName: "",
+          lastName: "",
+        }}
+        validationSchema={validation[step]}
+        validateOnBlur={false}
+        validateOnChange={false}
+        onSubmit={(values, actions) => {
+          nextStep();
+        }}
+      >
+        {(props) => (
+          <form>
+            <h1>Formulário de Teste</h1>
+            <SwitchStep step={step} />
+            <WrapperButtons>
+              <Button type="button" onClick={prevStep} label="Anterior" />
+              <Button
+                type="button"
+                onClick={() => props.handleSubmit()}
+                label={step === 2 ? "Confirmar" : "Próximo"}
+              />
+            </WrapperButtons>
+          </form>
+        )}
+      </Formik>
     </Container>
   );
 }

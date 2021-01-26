@@ -37,3 +37,9 @@ export const InputWrapper = styled.input`
     border: 1px solid #666;
   }
 `;
+
+export const Error = styled.div`
+  font-size: 0.8rem;
+  color: red;
+  margin-top: 0.3rem;
+`;

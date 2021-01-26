@@ -1,11 +1,21 @@
 import React from "react";
+import { useFormikContext } from "formik";
 import StepAnimated from "../StepAnimated";
 import Input from "../../../../components/Input";
 
 function Step2() {
+  const { values, errors, handleChange } = useFormikContext();
+
   return (
     <StepAnimated>
-      <Input label="Sobrenome" id="lastName" name="lastName" />
+      <Input
+        label="Sobrenome"
+        id="lastName"
+        name="lastName"
+        value={values.lastName}
+        error={errors.lastName}
+        onChange={handleChange}
+      />
     </StepAnimated>
   );
 }
