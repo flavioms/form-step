@@ -31,8 +31,7 @@ export const InputWrapper = styled.input`
   :-ms-input-placeholder {
     color: #333;
   }
-  padding: 2rem 3rem;
-  margin-right: 2rem;
+  padding: 1rem 2rem;
 
   &:focus {
     border: 1px solid #666;

@@ -15,6 +15,8 @@ export const Container = styled.button`
   max-height: 4.8rem;
   font-size: 1.2rem;
   background: #666;
+  color: #fff;
+  margin: 1rem;
 
   &:hover {
     background: ${shade(0.2, "#666")};
