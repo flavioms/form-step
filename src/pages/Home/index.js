@@ -55,11 +55,13 @@ function Home() {
             <SwitchStep step={step} />
             <WrapperButtons>
               <Button type="button" onClick={prevStep} label="Anterior" />
-              <Button
-                type="button"
-                onClick={() => props.handleSubmit()}
-                label={step === 2 ? "Confirmar" : "Próximo"}
-              />
+              {step !== 2 && (
+                <Button
+                  type="button"
+                  onClick={() => props.handleSubmit()}
+                  label={step >= 1 ? "Confirmar" : "Próximo"}
+                />
+              )}
             </WrapperButtons>
           </form>
         )}
