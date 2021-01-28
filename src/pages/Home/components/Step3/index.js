@@ -7,7 +7,8 @@ function Step3() {
 
   return (
     <StepAnimated>
-      <h1>{`${values.firstName} ${values.lastName}`}</h1>
+      <h1>Nome Completo:</h1>
+      <h2>{`${values.firstName} ${values.lastName}`}</h2>
     </StepAnimated>
   );
 }

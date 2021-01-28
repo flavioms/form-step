@@ -8,8 +8,8 @@ function Step2() {
 
   return (
     <StepAnimated>
+      <h1>Informe seu sobrenome:</h1>
       <Input
-        label="Sobrenome"
         id="lastName"
         name="lastName"
         value={values.lastName}

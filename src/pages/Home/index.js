@@ -51,7 +51,6 @@ function Home() {
       >
         {(props) => (
           <form>
-            <h1>Formulário de Teste</h1>
             <SwitchStep step={step} />
             <WrapperButtons>
               <Button type="button" onClick={prevStep} label="Anterior" />
